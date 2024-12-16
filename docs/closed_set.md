@@ -12,32 +12,18 @@ Most users should follow NVIDIA's documentation [here](https://docs.nvidia.com/d
 > The packages in this repository will compile without TensorRT and CUDA, and some functionality (e.g., remapping label images and visualizing the results) is available without TensorRT and CUDA.
 > If you do not have a NVIDIA GPU, you can skip straight to [building](#building).
 
-In some cases, a more minimal installation is desirable (e.g., containers).  The following steps *should* ensure a minimum viable installation of TensorRT:
-
-  1. Add the CUDA repositories [here](https://developer.nvidia.com/cuda-downloads) by installing the `deb (network)` package or
-
-```bash
-wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.1-1_all.deb
-sudo dpkg -i cuda-keyring_1.1-1_all.deb
-sudo apt update
+## TensorRT with Cuda Installation:
+Thisi repo was built with tensorrt- 8.6.1 and cuda-12.1. Download TensorRT-8.6.1 tar file from the website, extract it and set the path like this in your `.bashrc` file.
 ```
-
-  2. Check what version of CUDA TensorRT is built against:
-
-```console
-$ apt search nvinfer | grep cuda
-libnvinfer-bin/unknown 10.4.0.26-1+cuda12.6 amd64
-libnvinfer-dev/unknown,now 10.4.0.26-1+cuda12.6 amd64
-...
+export TENSORRT_INCLUDE_DIR=/home/user/TensorRT-8.6.1.6-cuda-12.1/TensorRT-8.6.1.6/include
+export TENSORRT_LIBRARY_DIR=/home/user/TensorRT-8.6.1.6-cuda-12.1/TensorRT-8.6.1.6/targets/x86_64-linux-gnu/lib
+export LD_LIBRARY_PATH=${TENSORRT_LIBRARY_DIR}:${LD_LIBRARY_PATH}
 ```
-
-  3.  Install TensorRT and CUDA if necessary:
-
-```bash
-# use the corresponding version number from the previous step or omit nvcc if already installed
-sudo apt install libnvinfer-dev libnvonnxparsers-dev libnvinfer-plugin-dev cuda-nvcc-12-6
+The cuda path looks like the following:
 ```
-
+export PATH=/usr/local/cuda-12.1/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-12.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+```
 ### Building
 
 Once the necessary dependencies are installed and this repository has been placed in a workspace, run the following:

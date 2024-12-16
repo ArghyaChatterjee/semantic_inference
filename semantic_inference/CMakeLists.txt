@@ -17,10 +17,18 @@ find_package(config_utilities REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(CUDA)
 
+# Find TensorRT paths from environment variables
+set(TENSORRT_INCLUDE_DIR $ENV{TENSORRT_INCLUDE_DIR})
+set(TENSORRT_LIBRARY_DIR $ENV{TENSORRT_LIBRARY_DIR})
+
+if(NOT TENSORRT_INCLUDE_DIR OR NOT TENSORRT_LIBRARY_DIR)
+    message(FATAL_ERROR "TensorRT paths are not set. Please set TENSORRT_INCLUDE_DIR and TENSORRT_LIBRARY_DIR environment variables.")
+endif()
+
 # Manually find TensorRT libraries
-find_library(TENSORRT_LIBRARY nvinfer HINTS /home/arghya/TensorRT-8.6.1.6-cuda-12.1/TensorRT-8.6.1.6/targets/x86_64-linux-gnu/lib)
-find_library(TENSORRT_PLUGIN_LIBRARY nvinfer_plugin HINTS /home/arghya/TensorRT-8.6.1.6-cuda-12.1/TensorRT-8.6.1.6/targets/x86_64-linux-gnu/lib)
-find_library(TENSORRT_ONNX_LIBRARY nvonnxparser HINTS /home/arghya/TensorRT-8.6.1.6-cuda-12.1/TensorRT-8.6.1.6/targets/x86_64-linux-gnu/lib)
+find_library(TENSORRT_LIBRARY nvinfer HINTS ${TENSORRT_LIBRARY_DIR})
+find_library(TENSORRT_PLUGIN_LIBRARY nvinfer_plugin HINTS ${TENSORRT_LIBRARY_DIR})
+find_library(TENSORRT_ONNX_LIBRARY nvonnxparser HINTS ${TENSORRT_LIBRARY_DIR})
 
 if(NOT TENSORRT_LIBRARY OR NOT TENSORRT_PLUGIN_LIBRARY OR NOT TENSORRT_ONNX_LIBRARY)
     message(FATAL_ERROR "Could not find all required TensorRT libraries")

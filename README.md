@@ -11,39 +11,18 @@ Closed-set and open-set segmentation are implemented as follows:
 
 Both kinds of semantic segmentation have a ROS interface associated with them, split between c++ and python as appropriate.
 
-
-## Table of Contents
-
-- [Credits](#credits)
-- [Getting started](#getting-started)
-  - [Closed-set](docs/closed_set.md#setting-up)
-  - [Open-set](docs/open_set.md#setting-up)
-- [Usage](#usage)
-
-## Credits
-
-`semantic_inference` was primarily developed by [Nathan Hughes](https://mit.edu/sparklab/people.html) at the [MIT-SPARK Lab](https://mit.edu/sparklab), assisted by [Yun Chang](https://mit.edu/sparklab/people.html), [Jared Strader](https://mit.edu/sparklab/people.html), [Aaron Ray](https://mit.edu/sparklab/people.html), and [Dominic Maggio](https://mit.edu/sparklab/people.html).
-A full list of contributors is maintaned [here](contributors.md).
-We welcome additional contributions!
-
 ## Getting started
-
-The recommended use-case for the repository is with ROS.
-We assume some familiarity with ROS in these instructions.
 To start, clone this repository into your catkin workspace and run rosdep to get any missing dependencies.
 This usually looks like the following:
 ```bash
-cd /path/to/catkin_ws/src
-git clone git@github.com:MIT-SPARK/semantic_inference.git
+cd ~/semantic_inference_ws/src
+git clone git@github.com:ArghyaChatterjee/semantic_inference.git
 rosdep install --from-paths . --ignore-src -r -y
 ```
 
-An (optional) quick primer for setting up a minimal workspace is below for those less familiar with ROS.
+Semantic Inference package depends on `config_utilities`[https://github.com/MIT-SPARK/config_utilities] package. You need to clone that package inside your `~/semantic_inference_ws/src` before building the `semantic_inference` package.
 
-<details>
-
-<summary>Making a workspace</summary>
-
+# Making a workspace
 First, make sure rosdep is setup:
 ```bash
 # Initialize necessary tools for working with ROS and catkin
@@ -55,10 +34,11 @@ rosdep update
 Then, make the workspace and initialize it:
 ```bash
 # Setup the workspace
-mkdir -p path/to/catkin_ws/src
-cd catkin_ws
+mkdir -p ~/semantic_inference_ws/src
+cd semantic_inference_ws
 catkin init
 catkin config -DCMAKE_BUILD_TYPE=Release
+catkin build
 ```
 
 </details>
@@ -67,15 +47,13 @@ Once you've added this repository to your workspace, follow one (or both) of the
 - [Closed-Set](docs/closed_set.md#setting-up)
 - [Open-Set](docs/open_set.md#setting-up)
 
-> **Note** </br>
-> Some of our other (larger) packages have or will have more accessible guides to getting `semantic_inference` set up for specific applications, such as [Hydra](https://github.com/MIT-SPARK/Hydra), [Khronos](https://github.com/MIT-SPARK/Khronos) or [Clio](https://github.com/MIT-SPARK/Clio).
-
 ## Usage
 
-`semantic_inference` is not intended for standalone usage.
-Instead, the intention is for the launch files in `semantic_inference` to be used in a larger project.
+`semantic_inference` is not intended for standalone usage. Instead, the intention is for the launch files in `semantic_inference` to be used in a larger project.
+
 More details about including them can be found in the [closed-set](docs/closed_set.md#using-closed-set-segmentation-online) and [open-set](docs/open_set.md#using-open-set-segmentation-online) documentation.
-However, it is possible to do something like
+
+However, launch the semantic segmentation inference node in the following way:
 ```
 roslaunch semantic_inference_ros semantic_inference.launch
 ```
