@@ -40,14 +40,14 @@
 #include "semantic_inference/logging.h"
 #include "semantic_inference/model_config.h"
 #include "semantic_inference_config.h"
-#if defined(ENABLE_TENSORRT) && ENABLE_TENSORRT
+#ifdef ENABLE_TENSORRT
 #include "model.h"
 #include "trt_utilities.h"
 #endif
 
 namespace semantic_inference {
 
-#if defined(ENABLE_TENSORRT) && ENABLE_TENSORRT
+#ifdef ENABLE_TENSORRT
 struct Segmenter::Impl {
   explicit Impl(const ModelConfig& config) : model(config) {}
   Model model;
