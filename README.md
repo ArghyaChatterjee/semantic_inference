@@ -47,7 +47,7 @@ Once you've added these repository to your workspace, follow one (or both) of th
 Download a single scene (the office scene without humans is recommended, and can be found [here](https://drive.google.com/uc?id=1CA_1Awu-bewJKpDrILzWok_H_6cOkGDb). The file is around ~16.8 GBs.
 
 <div align="center">
-    <img src="doc/media/uhuman_message.png">
+    <img src="docs/media/uhuman_message.png">
 </div>
 
 Here are the topics from rosbag:
