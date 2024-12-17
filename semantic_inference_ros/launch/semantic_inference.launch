@@ -54,6 +54,7 @@
             <param name="worker/max_queue_size" value="$(arg max_image_queue_size)"/>
             <param name="worker/image_separation_s" value="$(arg min_separation_s)"/>
             <param name="image_rotator/rotation" value="$(arg rotation_type)"/>
+            <remap from="/semantic_inference/color/image_raw" to="/tesse/left_cam/rgb/image_raw"/>
         </node>
     </group>
 
