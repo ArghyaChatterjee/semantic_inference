@@ -1,5 +1,4 @@
 # semantic_inference
-A ros2 version of semantic inference package.
 
 <div align="center">
    <img src="docs/media/ade20k_segmentation_efficientvit.png"/>
@@ -15,7 +14,7 @@ Both kinds of semantic segmentation have a ROS interface associated with them, s
 
 ## Getting started
 ### Requirements
-This package has been tested on ubuntu 22.04 with ros humble, cuda-12.1 and tensrort-8.6.1.
+This package has been tested on ubuntu 20.04 with ros noetic, cuda-12.1 and tensrort-8.6.1.
 
 ### Making a workspace
 First, make sure rosdep is setup:
