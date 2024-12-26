@@ -1,4 +1,5 @@
 # semantic_inference
+A ros1 version of semantic inference package.
 
 <div align="center">
    <img src="docs/media/ade20k_segmentation_efficientvit.png"/>
