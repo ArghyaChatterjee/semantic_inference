@@ -1,5 +1,6 @@
 # semantic_inference
-A ros2 version of semantic inference package.
+
+A ros2 version of semantic inference package for openset and closed set semantic segmentation.
 
 <div align="center">
    <img src="docs/media/ade20k_segmentation_efficientvit.png"/>
