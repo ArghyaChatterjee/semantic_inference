@@ -235,15 +235,15 @@ profile->setDimensions(name, OptProfileSelector::kMIN, replaceDynamic(dims, 256)
 profile->setDimensions(name, OptProfileSelector::kOPT, replaceDynamic(dims, 1920)); // Most common size
 profile->setDimensions(name, OptProfileSelector::kMAX, replaceDynamic(dims, 2048)); // Largest valid size
 ```
-This ensures the engine supports inputs in the range [256x256] to [2048x2048] while being optimized for 1920x1080.
+This ensures the engine supports inputs in the range `[256x256]` to `[2048x2048]` while being optimized for 1920x1080.
 
 ### Pretrained Models Input Layout:
 
-For an image input of size 1920×1080, the layout [1 x 3 x 1080 x 1920] represents a single RGB image with 3 channels (color channels: Red, Green, Blue), 1080 rows (height), 1920 columns (width), and the pixel values stored as 32-bit floating point numbers with `1` as the batch size. This format follows the NCHW convention: N = Batch Size, C = Number of Channels, H = Height, W = Width.
+For an image input of size 1920×1080, the layout `[1 x 3 x 1080 x 1920]` represents a single RGB image with 3 channels (color channels: Red, Green, Blue), 1080 rows (height), 1920 columns (width), and the pixel values stored as 32-bit floating point numbers with `1` as the batch size. This format follows the NCHW convention: N = Batch Size, C = Number of Channels, H = Height, W = Width.
 
 ### Pretrained Models Output Layout:
 
-For a tensor output of the layout [1 x 512 x 512] (INT32) represents `1` as the batch size, and `512 x 512` as the spatial dimensions of the output tensor (the segmentation map). (INT32) is the output tensor values stored as 32-bit integers used for segmentation labels.
+For a tensor output of the layout `[1 x 512 x 512]` (INT32) represents `1` as the batch size, and `512 x 512` as the spatial dimensions of the output tensor (the segmentation map). (INT32) is the output tensor values stored as 32-bit integers used for segmentation labels.
 
 
 ### Pretrained models Input and Output Image Tensor Size:
