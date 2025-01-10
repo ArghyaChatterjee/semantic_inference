@@ -57,6 +57,7 @@ class ExportModel(nn.Module):
     def forward(self, img):
         """Run inference."""
         img = F.interpolate(img, size=(512, 512), mode="bilinear")
+        # img = F.interpolate(img, size=(1080, 1920), mode="bilinear")
         ret = self.model(img)
         ret = F.interpolate(ret, size=(img.shape[2], img.shape[3]), mode="bilinear")
         return torch.argmax(ret, dim=1)

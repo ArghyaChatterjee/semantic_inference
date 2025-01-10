@@ -215,3 +215,4 @@ compile_commands.json
 
 *.pt
 /.vscode
+semantic_inference_venv/
