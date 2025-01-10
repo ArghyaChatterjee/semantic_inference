@@ -246,7 +246,7 @@ For an image input of size 1920×1080, the layout [1 x 3 x 1080 x 1920] represen
 For a tensor output of the layout [1 x 512 x 512] (INT32) represents `1` as the batch size, and `512 x 512` as the spatial dimensions of the output tensor (the segmentation map). (INT32) is the output tensor values stored as 32-bit integers used for segmentation labels.
 
 
-### Pretrained models Input and Output Image Tensor Size 
+### Pretrained models Input and Output Image Tensor Size:
 Try to read `.trt` file and print the input shape of the model using tensorrt:
 ```bash
 python3 input_shape_of_image_as_tensorrt.py
